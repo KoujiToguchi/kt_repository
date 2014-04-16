@@ -1,12 +1,37 @@
-﻿<!-**********************************->
-<!-**** カレンダー画面 (HTML)    ****->
-<!-**********************************->
+﻿<!doctype html>
+<html ng-app="app">
 
-<div ng-controller="CarenderController as carender" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
 
+    <script type="text/javascript" src="scripts/libs/jquery/jquery.min.js" id="jquery-js"></script>
+    <script type="text/javascript" src="scripts/App.min.js" charset="utf-8"></script>
+    <script src="js/angular.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="scripts/libs/bootstrap/bootstrap.js"></script>
+    <link href="scripts/libs/bootstrap/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <link href="stylesheets/app.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div ng-controller="CarenderController as carender">
    <!-- カレンダー表示 -->
    <div id = "carendertxt">
    {{carender.view_model.carender('carendertxt')}}
   </div>
+  {{hi}}
+
+
+<br>
+<p>
+       氏　名　　　　:
+      <input type="text" name="text01" id="text01" ng-model="carender.view_model.login" ng-keydown="alert("asasasas");">
  
+</p>
+
 </div>
+</body>
+</html>
