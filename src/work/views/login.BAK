@@ -1,0 +1,47 @@
+﻿<!-- 
+  (補足)
+  ng-controller="LoginController as login" とすると、
+  LoginController には LoginControllerインスタンス.$scope が割り当てられて、
+  login には LoginControllerインスタンス が割り当てられます。
+-->
+<div ng-controller="LoginController as login">
+    <h1>Login</h1>
+    <form name="fcset">
+    <p>
+      氏　名　　　　:
+      <input type="text" name="text01" id="text01" ng-model="login.view_model.login" ng-keydown="login.view_model.next_text(this,'text02')">
+    </p>
+    <p>
+      パスワード　:
+      <input type="password" name="text02" id="text02" ng-model="login.view_model.password" ng-keydown="meesgi=login.view_model.next_text_loginps(this,'text01', 8 , login.view_model.password)">
+    {{meesgi}}
+
+    </p>
+    <p>
+    県外　　　　　　: <input type="checkbox" name="text03" id="text03" ng-model="kengai" value="1">	
+    </p>
+    <p ng-show="kengai">
+      <input type="text" name="text04" id="text04" ng-model="kennm" ng-keydown="login.view_model.next_text(this,'text01')">
+    </p>
+
+
+    </form>
+
+    <p>
+      <button class="btn btn-primary" ng-click="login.view_model.authentication(login.view_model.login, login.view_model.password)">Login</button>
+    </p>
+    <p>
+      <button class="btn btn-primary" type="button" id = "txtbtn" ng-model="msg" ng-click="msg = login.view_model.msg(login.view_model.login, msg, 'txtbtn', this)">TEXT</button>
+   </p>
+   {{msg}}
+   <br>
+   <div id = "carendertxt">
+   {{login.view_model.carender('carendertxt')}}
+  </div>
+
+
+  <table border='1'>
+	<tr><td colspan='7' bgcolor='#7fffd4'>";</td>
+	</tr>
+　</table>
+</div>

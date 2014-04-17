@@ -1,0 +1,22 @@
+<div ng-controller="PortalController as portal">
+  <h1>Portal</h1>
+
+  <div>
+    <h2>Applications</h2>
+    <p >
+	<h3>氏　名 :
+	<!--{{userNm}}-->
+	<span ng-bind="userNm=portal.view_model.authentication_Out(userNm)"></span>
+	/<h3>
+    </p>
+    <div data-ng-repeat="application_name in session.application">
+      <a ui-sref="{{application_name}}">{{application_name}}</a>
+    </div>
+
+    <a ui-sref="kisai">起債管理システム</a>
+  </div>
+
+  <div>
+    <h2>Messages</h2>
+  </div>
+</div>

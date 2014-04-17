@@ -1,0 +1,59 @@
+﻿<!-- 
+  (補足)
+  ng-controller="LoginController as login" とすると、
+  LoginController には LoginControllerインスタンス.$scope が割り当てられて、
+  login には LoginControllerインスタンス が割り当てられます。
+-->
+<div ng-controller="SonotaController as sonota">
+    <h1>その他のコーナー</h1>
+    <form name="fcset">
+    <p>
+      氏　名　　　　:
+      <input type="text" name="text01" id="text01" ng-model="sonota.view_model.login" ng-keydown="sonota.view_model.next_text(sonota.view_model,'text02')">
+    </p>
+    <p>
+      パスワード　:
+      <input type="password" id="text02" ng-model="sonota.view_model.password" ng-keydown="meesgi=sonota.view_model.next_text_loginps(this,'text01', 8 , sonota.view_model.password);" >
+    {{meesgi}}
+
+    </p>
+   <!-- 県外チェックボックス表示 -->
+    <p>
+    県外　　　　　　: <input type="checkbox" name="text03" id="text03" ng-model="kengai" value="1">	
+    </p>
+   <!-- 県外テキストボックス表示 -->
+    <p ng-show="kengai">
+      <input type="text" name="text04" id="text04" ng-model="kennm" ng-keydown="sonota.view_model.next_text(this,'text01')">
+    </p>
+
+    </form>
+
+   <!-- Loginボタン表示 -->
+    <p>
+      <button class="btn btn-primary" ng-click="sonota.view_model.authentication(sonota.view_model.login, sonota.view_model.password)">Login</button>
+    </p>
+   <!-- TEXTボタン表示 -->
+    <p>
+      <button class="btn btn-primary" type="button" name="txtbtn" id = "txtbtn" ng-model="msg" ng-click="msg = sonota.view_model.msg(sonota.view_model.login, msg, 'txtbtn', this)" value="itemValue">TEXT</button>
+   </p>
+   <!--{{sonota.view_model.login}}-->
+   <!--{{msg}}-->
+   <br><br>
+   <!-- カレンダー表示 -->
+   <div id = "carendertxt">
+   <!--{{sonota.view_model.carender('carendertxt')}}-->
+      日　付：
+      <input type="text" name="textdate" id="textdate" ng-model="date" ng-click="sonota.view_model.carender('carendertxt')" value="{{date}}" >
+  </div>
+   <br>
+   <!-- カレンダーから指定された日付表示 -->
+  <!-- {{hi}}-->
+
+<br>
+<div ng-repeat="f in sonota.view_model.forms | uppercase">
+{{f.name}} {{f.score}}
+
+
+</div>
+
+</div>
